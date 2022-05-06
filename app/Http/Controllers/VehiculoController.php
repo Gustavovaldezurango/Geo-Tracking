@@ -34,7 +34,25 @@ class VehiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
+
     {
+
+
+
+
+        $request->validate([
+            'conductor' => 'required|max:10',
+            'documentoconductor' => '|required|numeric|max:11',
+            'modelo' => 'required|string',
+            'anno' => 'required|numeric',
+            'matricula' => 'required|string',
+            'placa' => 'required|numeric',
+            'tecnomecanica' => 'required',
+            'soat' => 'required',
+            'targetapropiedad' => 'required',
+            'fechavencimiento' => 'required',
+        ]);
         $vehiculos =  new Vehiculo();
         $vehiculos->conductor = $request->conductor;
         $vehiculos->documentoconductor = $request->documentoconductor;

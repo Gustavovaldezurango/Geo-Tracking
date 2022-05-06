@@ -1,0 +1,36 @@
+header{
+    background-color: white;
+    border-bottom: 1px solid grey;
+
+    margin: auto;
+}
+
+#logo-plantilla{
+    padding-left: 100px;
+    padding-right: 200px;
+}
+#table-index{
+margin-top: 20px;
+
+}
+
+#nav-index{
+margin-top: 10px;
+
+width: 900px;
+float: left;
+padding-top: 10px;
+}
+
+#lnk-create{
+
+    width: 80px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px;
+    padding-top: 10px;
+}
+#buscar{
+    width: 800px;
+    margin-right: 5px;
+}

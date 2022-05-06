@@ -1,8 +1,32 @@
 @extends('layouts.plantillabase');
 
 @section('contenido')
-<a href="vehiculos/create" class="btn btn-primary">Crear+</a>
-<table class="  table table-dart table-striped mt-4">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div-index">
+        <nav id="nav-index">
+            <form action="get">
+                 <input type="text" placeholder=" Buscar" id="buscar">
+                 <input type="submit" value="Filtar" class="btn btn-primary">
+            </form>
+        </nav>
+<nav id="lnk-create">
+    <a href="vehiculos/create" class="btn btn-primary">Crear+</a>
+</nav>
+
+
+
+    </div>
+
+<table class="  table table-dart table-striped mt-4" id="table-index">
 
     <thead>
         <tr>
@@ -30,4 +54,6 @@
         @endforeach
     </tbody>
 </table>
+</body>
+</html>
 @endsection

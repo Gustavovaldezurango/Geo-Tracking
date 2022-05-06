@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('documentoconductor');
             $table->string('modelo');
             $table->integer('anno');
-            $table->char('matricula');
+            $table->string('matricula');
             $table-> integer('placa');
             $table->string('tecnomecanica');
             $table->string('soat');
