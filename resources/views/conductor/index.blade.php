@@ -1,5 +1,10 @@
+
 @extends('layouts.plantillabase');
 
 @section('contenido')
-@include('vehiculo.table')
+
+@include('conductor.table');
+
 @endsection
+
+

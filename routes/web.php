@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.plantillabase');
 });
+Route::resource('vehiculos','App\Http\Controllers\VehiculoController');
+Route::resource('conductors','App\Http\Controllers\ConductorController');
 
-Route::resource('vehiculos', 'App\Http\Controllers\VehiculoController');
 
 Route::middleware([
     'auth:sanctum',
