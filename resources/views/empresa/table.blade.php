@@ -10,9 +10,9 @@
 <div id="div-index">
 
     @if($message = Session::get('ErrorInsert'))
-    <div class="col-3 alert alert-danger alert-dismissable fade show">
-        {{'Por favor llenar todos los campos correctamente'}}
-    </div>
+        <div class="col-4 alert alert-danger alert-dismissable fade show">
+            <small>{{'Por favor llenar todos los campos correctamente'}}</small>
+        </div>
     @endif
 
 
@@ -33,7 +33,7 @@
             </form>
         </nav>
         <nav id="lnk-create">
-            @include('conductor.form');
+            @include('empresa.form');
         </nav>
 
 
@@ -45,20 +45,22 @@
     <thead>
         <tr>
             <th scope= "col">Nombre</th>
-            <th scope= "col">Apellido</th>
-            <th scope= "col">Telefono</th>
+            <th scope= "col">Kit</th>
             <th scope= "col">Direccion</th>
-            <th scope= "col">No. Pase</th>
+            <th scope= "col">Persona Contacto</th>
+            <th scope= "col">Telefono</th>
+            <th scope= "col">Correo</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ( $conductors as $conductor)
+        @foreach ( $empresas as $empresa)
         <tr>
-            <td>{{$conductor->nombre}}</td>
-            <td>{{$conductor->apellido}}</td>
-            <td>{{$conductor->telefono}}</td>
-            <td>{{$conductor->direccion}}</td>
-            <td>{{$conductor->nopase}}</td>
+            <td>{{$empresa->nombre}}</td>
+            <td>{{$empresa->kit}}</td>
+            <td>{{$empresa->direccion}}</td>
+            <td>{{$empresa->personacontacto}}</td>
+            <td>{{$empresa->telefonocontacto}}</td>
+            <td>{{$empresa->correo}}</td>
         </tr>
 
         @endforeach

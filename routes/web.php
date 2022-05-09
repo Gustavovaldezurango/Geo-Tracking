@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 Route::resource('vehiculos','App\Http\Controllers\VehiculoController');
 Route::resource('conductors','App\Http\Controllers\ConductorController');
+Route::resource('empresas','App\Http\Controllers\EmpresaController');
 
 
 Route::middleware([
