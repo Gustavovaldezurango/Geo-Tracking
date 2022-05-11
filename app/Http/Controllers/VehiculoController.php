@@ -45,9 +45,9 @@ class VehiculoController extends Controller
             'anno' => 'required|numeric',
             'matricula' => 'required|string',
             'placa' => 'required|numeric',
-            'tecnomecanica' => 'required|image|mimes:jpg,jpeg,gif,svg|max:2048',
+            'tecnomecanica' => 'required',
             'soat' => 'required|image|mimes:jpg,jpeg,gif,svg|max:2048',
-            'targetapropiedad' => 'required|image|mimes:jpg,jpeg,gif,svg|max:2048',
+            'targetapropiedad' => 'required',
             'fechavencimiento' => 'required',
         ]);
 
@@ -56,7 +56,16 @@ class VehiculoController extends Controller
             ->withInput()
             ->with('ErrorInsert', 'llenar todos los campos')
             ->withErrors($validator);
-        }else {
+        }
+
+        if($request->hasFile('soat')) {
+            $image = $request->file('soat');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo');
+            $image->move($destinationPath, $image_name);
             $vehiculos =  new Vehiculo();
             $vehiculos->conductor = $request->conductor;
             $vehiculos->documentoconductor = $request->documentoconductor;
@@ -71,6 +80,7 @@ class VehiculoController extends Controller
             $vehiculos->save();
             return back()->with('Listo', 'se ha creado correctamente ');
         }
+
 
         //$image = $request -> file('tecnomecanica');
         //$nombre =  time().'.'.$image->getClienteOriginalExtension();

@@ -9,7 +9,7 @@
 <body>
 <div id="div-index">
     @if($message = Session::get('ErrorInsert'))
-<div class="col-3 alert alert-danger alert-dismissable fade show">
+<div class="col-4 alert alert-danger alert-dismissable fade show">
     <small>{{'Por favor llenar todos los campos correctamente'}}</small>
 </div>
 @endif

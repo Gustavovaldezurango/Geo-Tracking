@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class EmpresaController extends Controller
 {
@@ -13,10 +14,19 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
+
     {
-        $empresas = Empresa::all();
-        return view('empresa.index')-> with('empresas',$empresas);
+        $texto=trim($request->get('texto'));
+        $empresas =DB::table('empresas')
+        ->select('id','nombre', 'kit', 'direccion', 'personacontacto',
+        'telefonocontacto', 'correo' )
+        ->where('nombre', 'LIKE', '%'  .$texto.'%')
+        ->orwhere('correo','LIKE', '%'  .$texto.'%')
+        ->orderBy('nombre', 'asc' )
+        ->paginate(10);
+
+        return view('empresa.index',compact('empresas','texto'));
     }
 
     /**
@@ -75,7 +85,7 @@ class EmpresaController extends Controller
             $empresas->correo = $request->correo;
             $empresas->contraseña = $request->contraseña;
 
-                $empresas->save();
+            $empresas->save();
              return back()->with('Listo', 'se ha creado correctamente ');
 
     };

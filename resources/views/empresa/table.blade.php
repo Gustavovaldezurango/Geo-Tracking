@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <title>Document</title>
 </head>
 <body>
@@ -27,8 +28,9 @@
 
 
         <nav id="nav-index">
-            <form action="get">
-                 <input type="text" placeholder=" Buscar" id="buscar">
+            <form action="{{'empresas'}}" method="get">
+
+                 <input type="text" placeholder=" Buscar" id="buscar" name="texto" value="{{$texto}}">
                  <input type="submit" value="Filtar" class="btn btn-primary">
             </form>
         </nav>
@@ -53,6 +55,12 @@
         </tr>
     </thead>
     <tbody>
+        @if(count($empresas) <= 0)
+                <tr>
+                    <td colspan="6"> no se encuentran registros</td>
+                </tr>
+
+       @else
         @foreach ( $empresas as $empresa)
         <tr>
             <td>{{$empresa->nombre}}</td>
@@ -64,7 +72,9 @@
         </tr>
 
         @endforeach
+        @endif
     </tbody>
 </table>
+{{$empresas->links()}}
 </body>
 </html>

@@ -2,5 +2,7 @@
 
 @section('contenido')
 
+
+
 @include('empresa.table')
  @endsection

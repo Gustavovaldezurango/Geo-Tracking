@@ -16,13 +16,18 @@
                 @csrf
 
 
+
+
                 <div class="row">
 
                 <div class="col">
+
                     <input type="text" class="form-control" placeholder=" Nombre" aria-label="Nombre"   name="nombre"  value="{{ old('nombre')}}">
+
                     @error('nombre')
                     <small>*{{$message}}</small>
                     @enderror
+
                 </div>
 
                 <div class="col">
@@ -67,7 +72,7 @@
                     </div>
 
                     <div class="col">
-                      <input type="file" class="form-control" placeholder="Logo" aria-label="logo" name="logo" value="{{old('logo')}}">
+                      <input type="file" class="form-control" placeholder="Logo" aria-label="logo" name="logo" >
                       @error('logo')
                       <small>*{{$message}}</small>
                       @enderror

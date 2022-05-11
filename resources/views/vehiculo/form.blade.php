@@ -1,5 +1,14 @@
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -15,10 +24,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/vehiculos" method="post">
+
+            <form action="/vehiculos" method="post" >
                 @csrf
                 <div class="row">
                 <div class="col">
+
                     <input type="text" class="form-control" placeholder=" Nombre Conductor" aria-label="Nombre Conductor"   name="conductor"  value="{{ old('conductor')}}">
                     @error('conductor')
                     <small>*{{$message}}</small>
@@ -125,3 +136,6 @@
       </div>
     </div>
   </div>
+
+</body>
+</html>
