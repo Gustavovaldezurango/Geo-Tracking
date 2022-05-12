@@ -54,7 +54,7 @@
     <tbody>
         @foreach ( $conductors as $conductor)
         <tr>
-            <td><a href="{{route('conductors.show', $conductor->id)}}">{{$conductor->nombre}}</a></td>
+            <td>{{$conductor->nombre}}</td>
             <td>{{$conductor->apellido}}</td>
             <td>{{$conductor->telefono}}</td>
             <td>{{$conductor->direccion}}</td>
@@ -62,11 +62,12 @@
             <td>
                 <form action="{{ route('conductors.destroy',$conductor->id)}}"  method ="post">
 
-                    <a href="/conductors/{{$conductor->id}}/edit">Editar</a>
+                    <a href="/conductors/{{$conductor->id}}/edit" class="btn btn-success  btn-sm">Editar</a>
+                    <a href="{{route('conductors.show', $conductor->id)}}" class="btn btn-success  btn-sm">Ver</a>
 
                     @csrf
                      @method('delete')
-                   <button  type="submit" class="btn btn-danger"> borrar</button>
+                   <button  type="submit" class="btn btn-danger btn-sm"> Borrar</button>
                </form>
             </td>
         </tr>

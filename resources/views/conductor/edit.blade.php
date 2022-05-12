@@ -1,3 +1,5 @@
+
+
 @extends('layouts.plantillabase');
 
 @section('contenido')

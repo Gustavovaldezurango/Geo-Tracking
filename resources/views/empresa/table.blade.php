@@ -63,7 +63,7 @@
        @else
         @foreach ( $empresas as $empresa)
         <tr>
-            <td><a href="{{route('empresas.show', $empresa->id)}}">{{$empresa->nombre}}</a></td>
+            <td>{{$empresa->nombre}}</td>
             <td>{{$empresa->kit}}</td>
             <td>{{$empresa->direccion}}</td>
             <td>{{$empresa->personacontacto}}</td>
@@ -72,11 +72,12 @@
             <td>
                 <form action="{{ route('empresas.destroy',$empresa->id)}}"  method ="post">
 
-                 <a href="/empresas/{{$empresa->id}}/edit">Editar</a>
+                 <a href="/empresas/{{$empresa->id}}/edit"  class="btn btn-success  btn-sm" >Editar</a>
+                 <a href="{{route('empresas.show', $empresa->id)}}"class="btn btn-success  btn-sm">Ver</a>
 
                  @csrf
                   @method('delete')
-                <button  type="submit" class="btn btn-danger"> borrar</button>
+                <button  type="submit" class="btn btn-danger  btn-sm"> Borrar</button>
             </form>
             </td>
         </tr>

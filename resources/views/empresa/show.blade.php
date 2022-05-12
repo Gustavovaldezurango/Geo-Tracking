@@ -1,33 +1,46 @@
 @extends('layouts.plantillabase');
 
 @section('contenido')
-<table>
-    <tr>
-        <th>Nombre:</th>
-        <td> {{$empresa->nombre}}</td>
-    </tr>
-    <tr>
-        <th>kit:</th>
-        <td> {{$empresa->kit}}</td>
-    </tr>
-    <tr>
-        <th>Direccion:</th>
-        <td> {{$empresa->direccion}}</td>
-    </tr>
-    <tr>
-        <th>nombre de contacto:</th>
-        <td> {{$empresa->personacontacto}}</td>
-    </tr>
-    <tr>
-        <th>Telefono de contacto:</th>
-        <td> {{$empresa->telefonocontacto}}</td>
-    </tr>
-    <tr>
-        <th>correo:</th>
-        <td> {{$empresa->correo}}</td>
-    </tr>
 
+
+
+<table class="  table table-dart table-striped mt-4" id="table-index">
+
+    <thead>
+        <tr>
+            <th scope= "col">Nombre</th>
+            <th scope= "col">kit</th>
+            <th scope= "col">Direccion</th>
+            <th scope= "col">nombre de contacto</th>
+            <th scope= "col">Telefono de contacto</th>
+            <th scope= "col">correo</th>
+            <th scope= "col">Logo</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>{{$empresa->nombre}}</td>
+            <td>{{$empresa->kit}}</td>
+            <td>{{$empresa->direccion}}</td>
+            <td>{{$empresa->personacontacto}}</td>
+            <td>{{$empresa->telefonocontacto}}</td>
+            <td>{{$empresa->correo}}</td>
+            <td>{{$empresa->logo}}</td>
+        </tr>
+
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="7" id="boton"><a href="/empresas" class=" btn btn-success">Devolver</a></td>
+        </tr>
+
+
+    </tfoot>
 </table>
+
 
 
 

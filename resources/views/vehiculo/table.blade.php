@@ -59,6 +59,17 @@
         <td>{{$vehiculo->placa}}</td>
         <td>{{$vehiculo->tecnomecanica}}</td>
         <td>{{$vehiculo->soat}}</td>
+        <td>
+            <form action="{{ route('vehiculos.destroy',$vehiculo->id)}}"  method ="post">
+
+                <a href="/vehiculos/{{$vehiculo->id}}/edit" class="btn btn-success  btn-sm">Editar</a>
+                <a href={{ route('vehiculos.show',$vehiculo->id)}} class="btn btn-success  btn-sm">Ver</a>
+
+                @csrf
+                 @method('delete')
+               <button  type="submit" class="btn btn-danger  btn-sm"> Borrar</button>
+           </form>
+        </td>
     </tr>
 
     @endforeach

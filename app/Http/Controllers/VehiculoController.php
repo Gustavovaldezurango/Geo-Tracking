@@ -66,6 +66,7 @@ class VehiculoController extends Controller
            //  exit(0);
             $destinationPath = public_path('img\vehiculo');
             $image->move($destinationPath, $image_name);
+
             $vehiculos =  new Vehiculo();
             $vehiculos->conductor = $request->conductor;
             $vehiculos->documentoconductor = $request->documentoconductor;
@@ -115,7 +116,8 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehiculo = Vehiculo::find($id);
+        return view('vehiculo.show')->with('vehiculo', $vehiculo);
     }
 
     /**
@@ -125,7 +127,11 @@ class VehiculoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
+
     {
+        $vehiculo = Vehiculo::find($id);
+        return view('vehiculo.edit')->with('vehiculo', $vehiculo );
+
 
     }
 
@@ -138,7 +144,21 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vehiculo = Vehiculo::find($id);
+        $vehiculo =  new Vehiculo();
+        $vehiculo->conductor = $request->conductor;
+        $vehiculo->documentoconductor = $request->documentoconductor;
+        $vehiculo->modelo = $request->modelo;
+        $vehiculo->anno = $request->anno;
+        $vehiculo->matricula = $request->matricula;
+        $vehiculo->placa = $request->placa;
+        $vehiculo->tecnomecanica = $request->tecnomecanica;
+        $vehiculo->soat = $request->soat;
+        $vehiculo->targetapropiedad = $request->targetapropiedad;
+        $vehiculo->fechavencimiento = $request->fechavencimiento;
+        $vehiculo->save();
+        return redirect('vehiculos');
+
     }
 
     /**
@@ -149,6 +169,11 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehiculo = Vehiculo::find($id);
+        $vehiculo->delete();
+        return redirect('vehiculos');
+
+
+
     }
 }
