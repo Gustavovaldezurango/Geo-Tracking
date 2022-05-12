@@ -26,6 +26,7 @@ class EmpresaController extends Controller
         ->orderBy('nombre', 'asc' )
         ->paginate(10);
 
+
         return view('empresa.index',compact('empresas','texto'));
     }
 
@@ -36,7 +37,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('empresa.create');
     }
 
     /**
@@ -102,7 +103,8 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        //
+        $empresa = Empresa::find($id);
+        return view('empresa.show')->with('empresa', $empresa);
     }
 
     /**
@@ -113,7 +115,8 @@ class EmpresaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empresa = Empresa::find($id);
+        return view('empresa.edit')->with('empresa', $empresa);
     }
 
     /**
@@ -125,7 +128,19 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empresa =  Empresa::find($id);
+             $empresa->nombre = $request->nombre;
+            $empresa->kit = $request->kit;
+            $empresa->direccion = $request->direccion;
+            $empresa->personacontacto = $request->personacontacto;
+            $empresa->telefonocontacto = $request->telefonocontacto;
+            $empresa->logo = $request->logo;
+            $empresa->correo = $request->correo;
+            $empresa->contraseña = $request->contraseña;
+
+            $empresa ->save();
+
+            return redirect('/empresas');
     }
 
     /**
@@ -136,6 +151,8 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empresa = Empresa::find( $id);
+        $empresa->delete();
+        return redirect('/empresas');
     }
 }
