@@ -77,7 +77,8 @@ class ConductorController extends Controller
      */
     public function show($id)
     {
-        //
+        $conductor = Conductor::find($id);
+        return view('conductor.show')->with('conductor', $conductor);
     }
 
     /**
@@ -88,7 +89,8 @@ class ConductorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $conductor = Conductor::find($id);
+        return view('conductor.edit')->with('conductor', $conductor);
     }
 
     /**
@@ -100,7 +102,18 @@ class ConductorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $conductor =  new Conductor();
+        $conductor->nombre = $request->nombre;
+        $conductor->apellido = $request->apellido;
+        $conductor->telefono = $request->telefono;
+        $conductor->direccion = $request->direccion;
+        $conductor->nopase = $request->nopase;
+        $conductor->pase = $request->pase;
+        $conductor->cedula = $request->cedula;
+        $conductor->hojavida = $request->hojavida;
+
+        $conductor->save();
+        return redirect('/conductors');
     }
 
     /**
@@ -111,6 +124,9 @@ class ConductorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $conductor = Conductor::find($id);
+        $conductor->delete();
+        return redirect('/conductors');
+
     }
 }

@@ -54,11 +54,21 @@
     <tbody>
         @foreach ( $conductors as $conductor)
         <tr>
-            <td>{{$conductor->nombre}}</td>
+            <td><a href="{{route('conductors.show', $conductor->id)}}">{{$conductor->nombre}}</a></td>
             <td>{{$conductor->apellido}}</td>
             <td>{{$conductor->telefono}}</td>
             <td>{{$conductor->direccion}}</td>
             <td>{{$conductor->nopase}}</td>
+            <td>
+                <form action="{{ route('conductors.destroy',$conductor->id)}}"  method ="post">
+
+                    <a href="/conductors/{{$conductor->id}}/edit">Editar</a>
+
+                    @csrf
+                     @method('delete')
+                   <button  type="submit" class="btn btn-danger"> borrar</button>
+               </form>
+            </td>
         </tr>
 
         @endforeach

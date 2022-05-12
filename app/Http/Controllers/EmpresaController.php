@@ -23,7 +23,7 @@ class EmpresaController extends Controller
         'telefonocontacto', 'correo' )
         ->where('nombre', 'LIKE', '%'  .$texto.'%')
         ->orwhere('correo','LIKE', '%'  .$texto.'%')
-        ->orderBy('nombre', 'asc' )
+        ->orderBy( 'id' ,'desc' )
         ->paginate(10);
 
 

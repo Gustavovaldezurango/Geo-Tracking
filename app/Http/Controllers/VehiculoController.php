@@ -126,7 +126,7 @@ class VehiculoController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
