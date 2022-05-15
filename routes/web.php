@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +12,6 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::post('/register',[RegisterController::class, 'show']);
-Route::post('/register',[RegisterController::class, 'register']);
-Route::post('/session',[SessionController::class, 'show']);
-Route::post('/session',[SessionController::class, 'login']);
-Route::post('/home',[HomeController::class, 'index']);
-
 
 Route::get('/', function () {
     return view('layouts.plantillabase');
