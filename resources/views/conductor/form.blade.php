@@ -15,7 +15,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/conductors" method="post">
+            <form action="/conductors" method="post" enctype="multipart/form-data">
                 @csrf
 
 
@@ -33,6 +33,7 @@
                     @error('apellido')
                     <small>*{{$message}}</small>
                     @enderror
+                </div>
                 </div>
 
                 <br>
@@ -70,7 +71,7 @@
                     </div>
 
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="pase" aria-label="pase" name="pase" value="{{old('pase')}}">
+                      <input type="file" class="form-control" placeholder="pase" aria-label="pase" name="pase" value="{{old('pase')}}">
                       @error('pase')
                       <small>*{{$message}}</small>
                       @enderror
@@ -85,7 +86,7 @@
 
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Cedula" aria-label="cedula" name="cedula" value="{{old('cedula')}}">
+                        <input type="file" class="form-control" placeholder="Cedula" aria-label="cedula" name="cedula" value="{{old('cedula')}}">
                         @error('cedula')
                         <small>*{{$message}}</small>
                         @enderror
@@ -93,7 +94,7 @@
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="hojavida" aria-label="hojavida" name="hojavida" value="{{old('hojavida')}}">
+                        <input type="file" class="form-control" placeholder="hoja de vida" aria-label="hojavida" name="hojavida" value="{{old('hojavida')}}">
                         @error('hojavida')
                         <small>*{{$message}}</small>
                         @enderror

@@ -39,9 +39,9 @@ class ConductorController extends Controller
         $validator = Validator::make($request->all(),[
             'nombre'=>'required|max:10',
             'apellido'=>'required|max:10',
-            'telefono'=>'required|max:14|min:5|numeric',
+            'telefono'=>'required|min:5|numeric',
             'direccion'=>'required',
-            'nopase'=>'required|numeric|max:20',
+            'nopase'=>'required|numeric',
             'pase'=>'required',
             'cedula'=>'required',
             'hojavida'=>'required',
@@ -52,7 +52,34 @@ class ConductorController extends Controller
             ->withInput()
             ->with('ErrorInsert', 'llenar todos los campos')
             ->withErrors($validator);
-        }else{
+        }
+        if($request->hasFile('pase')) {
+            $image = $request->file('pase');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo\pase');
+            $image->move($destinationPath, $image_name);
+        }
+        if($request->hasFile('cedula')) {
+            $image = $request->file('cedula');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo\cedula');
+            $image->move($destinationPath, $image_name);
+        }
+        if($request->hasFile('hojavida')) {
+            $image = $request->file('hojavida');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo\hojadevida');
+            $image->move($destinationPath, $image_name);
+
             $conductor =  new Conductor();
             $conductor->nombre = $request->nombre;
             $conductor->apellido = $request->apellido;

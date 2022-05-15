@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.plantillabase');
-});
+//Route::get('/', function () {
+  //  return view('layouts.plantillabase');
+//});
+//Route::get('/register', function () {
+  //  return view('auth.register');
+//});
+Route::post('/register',[RegisterController::class, 'show']);
+Route::post('/register',[RegisterController::class, 'register']);
+Route::post('/login',[LoginController::class, 'show']);
+Route::post('/login',[LoginController::class, 'login']);
+Route::post('/home',[HomeController::class, 'index']);
+
+
+
 Route::resource('vehiculos','App\Http\Controllers\VehiculoController');
 Route::resource('conductors','App\Http\Controllers\ConductorController');
 Route::resource('empresas','App\Http\Controllers\EmpresaController');

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
 
@@ -25,7 +26,7 @@
         </div>
         <div class="modal-body">
 
-            <form action="/vehiculos" method="post" >
+            <form action="/vehiculos" method="post" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
                 <div class="col">
@@ -36,11 +37,13 @@
                     @enderror
                 </div>
 
+
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Documeto Conductor" aria-label="Documeto Conductor" name="documentoconductor" value="{{old('documentoconductor')}}">
                     @error('documentoconductor')
-                    <small>*{{'El campo año es obligatorio.'}}</small>
+                    <small>*{{'el campo Documento de Conductor  es obligatorio'}}</small>
                     @enderror
+                </div>
                 </div>
 
                 <br>
@@ -90,14 +93,14 @@
 
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Tecnico-Mecanica" aria-label="Tecnico-Mecanica" name="tecnomecanica" value="{{old('tecnomecanica')}}">
+                        <input type="file" class="form-control" placeholder="Tecnico-Mecanica" aria-label="Tecnico-Mecanica" name="tecnomecanica" value="{{old('tecnomecanica')}}">
                         @error('tecnomecanica')
                         <small>*{{'El campo tecnico mecanica es obligatorio.'}}</small>
                         @enderror
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="SOAT" aria-label="SOAT" name="soat" value="{{old('soat')}}">
+                        <input type="file" class="form-control" placeholder="SOAT" aria-label="SOAT" name="soat" value="{{old('soat')}}">
                         @error('soat')
                       <small>*{{$message}}</small>
                       @enderror
@@ -110,7 +113,7 @@
                 <div class="row">
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Targeta de Propiedad" aria-label="Targeta de Propiedad" name="targetapropiedad" value="{{old('targetapropiedad')}}">
+                        <input type="file" class="form-control" placeholder="Targeta de Propiedad" aria-label="Targeta de Propiedad" name="targetapropiedad" value="{{old('targetapropiedad')}}">
                         @error('targetapropiedad')
                         <small>*{{'El campo targeta de propiedad es obligatorio.'}}</small>
                         @enderror
@@ -129,7 +132,7 @@
                   <br>
                   <br>
                   <div class="modal-footer">
-                    <button type="submit"  class="btn btn-primary" tabindex="4">crear</button>
+                    <button type="submit"  class="btn btn-primary"  tabindex="4">crear</button>
                   </div>
         </div>
             </form>

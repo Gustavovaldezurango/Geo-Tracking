@@ -41,3 +41,12 @@ padding-top: 10px;
     position: relative;
     left: 100px;
 }
+
+#boton-vehiculo{
+    border: 1 px
+    solid red  ;
+}
+.btn btn-primary{
+    border: 1px
+    solid red  ;
+}

@@ -40,13 +40,13 @@ class VehiculoController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'conductor' => 'required|max:10',
-            'documentoconductor' => '|required|numeric|max:11',
+            'documentoconductor' => '|required|numeric',
             'modelo' => 'required|string',
             'anno' => 'required|numeric',
             'matricula' => 'required|string',
             'placa' => 'required|numeric',
             'tecnomecanica' => 'required',
-            'soat' => 'required|image|mimes:jpg,jpeg,gif,svg|max:2048',
+            'soat' => 'required|' ,//image|mimes:jpg,jpeg,gif,svg|max:2048',
             'targetapropiedad' => 'required',
             'fechavencimiento' => 'required',
         ]);
@@ -57,14 +57,31 @@ class VehiculoController extends Controller
             ->with('ErrorInsert', 'llenar todos los campos')
             ->withErrors($validator);
         }
-
+        if($request->hasFile('tecnomecanica')) {
+            $image = $request->file('tecnomecanica');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo\tecnomecanica');
+            $image->move($destinationPath, $image_name);
+        }
         if($request->hasFile('soat')) {
             $image = $request->file('soat');
            //  print_r($image);
             $image_name = time().'.'.$image->getClientOriginalExtension();
            //  echo $image;
            //  exit(0);
-            $destinationPath = public_path('img\vehiculo');
+            $destinationPath = public_path('img\vehiculo\soat');
+            $image->move($destinationPath, $image_name);
+        }
+        if($request->hasFile('targetapropiedad')) {
+            $image = $request->file('targetapropiedad');
+           //  print_r($image);
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+           //  echo $image;
+           //  exit(0);
+            $destinationPath = public_path('img\vehiculo\targetapropiedad');
             $image->move($destinationPath, $image_name);
 
             $vehiculos =  new Vehiculo();
@@ -80,7 +97,8 @@ class VehiculoController extends Controller
             $vehiculos->fechavencimiento = $request->fechavencimiento;
             $vehiculos->save();
             return back()->with('Listo', 'se ha creado correctamente ');
-        }
+    }
+}
 
 
         //$image = $request -> file('tecnomecanica');
@@ -106,7 +124,7 @@ class VehiculoController extends Controller
 
 
 
-    }
+
 
     /**
      * Display the specified resource.
